@@ -1,0 +1,37 @@
+name: Terraform Plan
+
+on:
+  push:
+    branches:
+      - master
+      - terraform
+    pull_request:
+      - master
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        workspace: ['xyz-homelab']
+    defaults:
+      run:
+        working-directory: terraform/
+    steps: 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Init
+        id: init
+        run: TF_WORKSPACE=${{ matrix.workspace }} terraform init
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -no-color
+        continue-on-error: true
