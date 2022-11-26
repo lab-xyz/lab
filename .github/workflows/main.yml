@@ -18,6 +18,8 @@ jobs:
         - environment: 182
           tf_backend: TF_BACKEND_182
     steps:
-      - name: Terraform Init
+      - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
+
+      - name: Run terraform init
         run: terraform init --backend-config="address=${{ secrets.[matrix.tf_backend] }}"
