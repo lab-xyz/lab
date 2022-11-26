@@ -15,7 +15,7 @@ jobs:
         workspace: ['xyz-homelab']
     defaults:
       run:
-        working-directory: terraform/
+        working-directory: terraform
     steps: 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
