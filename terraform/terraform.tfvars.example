@@ -3,7 +3,8 @@ tenancy_ocid     = ""
 # https://cloud.oracle.com/identity/domains/my-profile
 user_ocid        = ""
 # https://cloud.oracle.com/identity/domains/my-profile/api-keys
-private_key_path = ""
+# contents of the private key, rather than a path pointing to the .pem file
+private_key = ""
 fingerprint      = ""
 region           = "us-ashburn-1"
 

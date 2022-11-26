@@ -34,8 +34,8 @@ variable "fingerprint" {
   type        = string
 }
 
-variable "private_key_path" {
-  description = "Location of the .pem API private key file from OCI."
+variable "private_key" {
+  description = "Contents of the .pem private key, downloaded from Oracle Cloud"
   type        = string
 }
 
