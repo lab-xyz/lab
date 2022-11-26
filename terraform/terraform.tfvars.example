@@ -1,0 +1,18 @@
+# https://cloud.oracle.com/org-mgmt/tenancy
+tenancy_ocid     = ""
+# https://cloud.oracle.com/identity/domains/my-profile
+user_ocid        = ""
+# https://cloud.oracle.com/identity/domains/my-profile/api-keys
+private_key_path = ""
+fingerprint      = ""
+region           = "us-ashburn-1"
+
+# VM Images: https://docs.oracle.com/en-us/iaas/images/
+vm_image_arm = "ocid1.image.oc1.iad.aaaaaaaam4d2tsohvgq7cqilhtcnlvp2zmzatb57xuprljhkvqgon73uzeqq"
+
+# SSH Pubkey
+ssh_public_key = "ssh-ed25519 xxx..."
+
+# OPTIONAL
+vm_name_template = "xyz-homelab"
+compartment_name = "xyz_homelab"
