@@ -22,4 +22,4 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Run terraform init
-        run: terraform init --backend-config="address=${{ secrets.[matrix.tf_backend] }}"
+        run: terraform init --backend-config="address=${{ secrets[matrix.tf_backend] }}"
