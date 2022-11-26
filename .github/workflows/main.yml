@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-      include:
-        - environment: 182
-          tf_backend: TF_BACKEND_182
+        include:
+          - environment: 182
+            tf_backend: TF_BACKEND_182
     steps:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
