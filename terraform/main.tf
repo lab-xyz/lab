@@ -1,8 +1,12 @@
 terraform {
     required_version = ">= 1.3.0"
 
-    backend "http" {
-        update_method = "PUT"
+    cloud {
+        organization = "cjriddz"
+
+        workspaces {
+          name = "xyz-homelab"
+        }
     }
 
     required_providers {
