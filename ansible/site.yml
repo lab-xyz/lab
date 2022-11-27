@@ -6,3 +6,4 @@
     apt:
       name: neofetch
       state: latest
+      become: true
