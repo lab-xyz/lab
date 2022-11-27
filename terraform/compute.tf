@@ -2,9 +2,7 @@ resource "oci_core_instance" "vm_instance_ampere" {
     availability_domain                 = data.oci_identity_availability_domains.ads.availability_domains[0].name
     compartment_id                      = oci_identity_compartment.tf-compartment.id
     shape                               = "VM.Standard.A1.Flex"
-    display_name                        = join("", [var.vm_name_template, "-arm"])
-    is_pv_encryption_in_transit_enabled = true
-    preserve_boot_volume = false
+    display_name                        = join("", [var.vm_name_template, "-arm"]) is_pv_encryption_in_transit_enabled = true preserve_boot_volume = false
 
     shape_config {
         memory_in_gbs = 24
@@ -40,6 +38,8 @@ resource "oci_core_instance" "vm_instance_ampere" {
     provisioner "remote-exec" {
         inline = [
             "echo 'This instance was provisioned by Terraform in ${var.region}.' | sudo tee /etc/motd",
+            "sudo apt update && sudo apt install ansible git",
+            "ansible-pull -C ansible -U https://github.com/lab-xyz/lab.git ansible/site.yml"
         ]
     }
 }
