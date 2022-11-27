@@ -1,0 +1,39 @@
+apiVersion: v1
+data:
+    dns-token: ENC[AES256_GCM,data:rOshYm2sDMm1nWwIBIEA3ZGac4hJ5XkRlOaG6WL9n5laV50iKhM0Qk7copVovOQZwq1VD9Igf+U=,iv:9fCVWVlgUgrzUEGcpDqg5xQiRPIuLS1NJ/A/EMUxJIA=,tag:ab1ggt0C/f3kKNo0pSMs3A==,type:str]
+kind: Secret
+metadata:
+    creationTimestamp: null
+    name: cloudflare-api-skovati
+    namespace: kube-system
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2022-11-27T20:27:14Z"
+    mac: ENC[AES256_GCM,data:oFkyqtojB4VRd6NcNFPMii/SujxAcHQBBkfgOxQFYmAb98koXcVdJ/sY9npIgVxC/qvE6JMCuuQPhh2E+VZCYlnD55iKq3NiBdplWi1E1b24h7Z2o4tOqbyZpHPZ/yPisE850TvHTuRsUr6F51DVYXA79MLzU8Hw7GL+axf1dzE=,iv:2JlKC7cU3vkaqjXoZ11k3kFJul2roB8GHyJbe0XiXhU=,tag:SNOmouoPmq6/TufkJirtmw==,type:str]
+    pgp:
+        - created_at: "2022-11-27T20:27:13Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwAAAAAAAAAAARAAkc36Rlyx1NRL1ve8hfQxuxJilBrTgu6I6DIZ5gAVZ5CP
+            hcYHihKWiwUWr0uzpyA0E6RQW3u7nJvHgn9JBTmI4pCLJX02ZsnUsOGniIA5fuFb
+            N6+eKkYFprh+vMJLysFiy/vW82wDbZVWKfMw7In/CvnCzdkrvq3S+GphqQp3pEkk
+            NelRRd9ZtWx3hgkojx7YpzVBE+dlXTK8b0m9mUDeIyYNSYmQJmcTU1EiLy7phM6t
+            IBJb9SQS5FY8GLf3JHSvusYCpRFR8IXhhhRD+Qxurr/wSrDC5gkNzIKiEszZvW6y
+            wfJqBt5TdMvlCpFkAl9kJu/0uITf0VDyasGwTz5V529MkR/pOM7kE61BSRW2Vrj3
+            0T7Iuhv11Fi4kWwePtjpZzJFyfuFA3WIRG0nqj2yi93bNP8JHyEo0fhpsCaDMpQk
+            nscqedtFZffPzhqq5GjPUAqNLidSf1pkV4i5EeWWGAsXa8/Hpavhvtvvs6OHhI17
+            vmN5SoMAbXAcZNulvdJLCaSDPlBSTomcILKSEu7Kb/yjiOCO/7EmSNQ8XdopJFZH
+            /+ITTmcSz1nBr1XL0CgYTfC5ULic4N3gsiHabVcPUokDloWRu8bPRbHEOFD3Poxn
+            msxVoszQeY8V2/tijv8DxaMxB9EBL8ESUzhuCbQGgkHWAbqPGG6X6wKcRTnuCEzS
+            XgGBcncULRTK+bdq0+EdhlJiqkPfGf9VaM16UPVBFSPoQQB7CN7QaBPSkQW+6JmO
+            AOhwgJ6held1MSG1c93db6JJ5Y9mCfOwszHe6Yq2kLvivnfYDyVo2LZ6tRAG3uc=
+            =O28T
+            -----END PGP MESSAGE-----
+          fp: 7A5058C3DC616AB848AEC585F7A4B3A5DA36606A
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
