@@ -1,5 +1,8 @@
 resource "random_id" "id" {
     byte_length = 8
+    keepers = {
+        uuid = uuid()
+    }
 }
 
 resource "oci_core_instance" "vm_instance_ampere" {
