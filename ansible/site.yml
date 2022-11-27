@@ -5,6 +5,7 @@
   gather_facts: true
   vars:
     k3s_version: v1.25.4+k3s1
+    k3s_args: "--node-external-ip {{ k3s_public_ip }}"
   roles:
     - role: config
     - role: k3s
