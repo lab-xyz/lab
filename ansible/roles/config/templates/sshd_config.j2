@@ -1,0 +1,14 @@
+Include /etc/ssh/sshd_config.d/*.conf
+
+#Port 22
+#AddressFamily any
+#ListenAddress 0.0.0.0
+#ListenAddress ::
+
+PermitRootLogin no
+PubkeyAuthentication yes
+PasswordAuthentication no
+
+X11Forwarding no
+PrintMotd no
+AcceptEnv LANG LC_*

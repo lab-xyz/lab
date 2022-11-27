@@ -9,4 +9,5 @@
   roles:
     - role: config
     - role: k3s
+    - role: firewall
     - role: patching
