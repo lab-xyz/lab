@@ -42,7 +42,7 @@ resource "oci_core_subnet" "homelab_subnet" {
 }
 
 resource "oci_core_security_list" "public-security-list" {
-  compartment_id = oci_identity_compartment.homelab.id
+  compartment_id = oci_identity_compartment.tfcompartment.id
   vcn_id         = oci_core_vcn.homelab_vcn.id
   display_name   = "public-security-list"
 
@@ -81,18 +81,18 @@ resource "oci_core_security_list" "public-security-list" {
 }
 
 resource "oci_core_network_security_group_security_rule" "homelab-network-security-group-list-ingress" {
-  network_security_group_id = oci_core_network_security_group.nsg.id
+  network_security_group_id = oci_core_network_security_group.homelab_nsg.id
   direction                 = "INGRESS"
-  source                    = oci_core_network_security_group.nsg.id
+  source                    = oci_core_network_security_group.homelab_nsg.id
   source_type               = "NETWORK_SECURITY_GROUP"
   protocol                  = "all"
   stateless                 = true
 }
 
 resource "oci_core_network_security_group_security_rule" "homelab-network-security-group-list-egress" {
-  network_security_group_id = oci_core_network_security_group.nsg.id
+  network_security_group_id = oci_core_network_security_group.homelab_nsg.id
   direction                 = "EGRESS"
-  destination               = oci_core_network_security_group.nsg.id
+  destination               = oci_core_network_security_group.homelab_nsg.id
   destination_type          = "NETWORK_SECURITY_GROUP"
   protocol                  = "all"
   stateless                 = true
