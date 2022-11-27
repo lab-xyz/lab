@@ -30,9 +30,16 @@ resource "oci_core_instance" "vm_instance_ampere" {
         nsg_ids                   = [oci_core_network_security_group.homelab_nsg.id]
     }
 
+    connection {
+        type        = "ssh"
+        host        = "${self.public_ip}"
+        user        = "ubuntu"
+        private_key = "${var.ssh_private_key}"
+    }
+
     provisioner "remote-exec" {
         inline = [
-            "echo 'This instance was provisioned by Terraform.' | sudo tee /etc/motd",
+            "echo 'This instance was provisioned by Terraform in ${var.region}.' | sudo tee /etc/motd",
         ]
     }
 }
