@@ -36,7 +36,7 @@ resource "oci_core_subnet" "homelab_subnet" {
   dns_label      = "homelab"
 
   # Provider code tries to maintain compatibility with old versions.
-  security_list_ids = [oci_core_vcn.homelab_vcn.public-security-list.id]
+  security_list_ids = [oci_core_security_list.public-security-list.id]
   display_name   = "${var.compartment_name}-subnet"
   route_table_id    = oci_core_route_table.homelab_rt.id
 }
