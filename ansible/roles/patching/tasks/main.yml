@@ -1,0 +1,29 @@
+---
+
+- name: install units for ansible-pull
+  template:
+  dest: /etc/systemd/system
+  src: "{{ item }}"
+  loop:
+  - ansible-pull.service
+  - ansible-pull.timer
+
+- name: enable ansible-pull timer
+  service:
+  name: ansible-pull.timer
+  state: started
+  enabled: yes
+
+- name: install unattended-upgrades
+  apt:
+    pkg: unattended-upgrades
+    state: present
+    update_cache: yes
+
+- name: create unattended-upgrades configuration
+  template:
+    src: 50unattended-upgrades.j2
+    dest: /etc/apt/apt.conf.d/50unattended-upgrades
+    owner: root
+    group: root
+    mode: 0644

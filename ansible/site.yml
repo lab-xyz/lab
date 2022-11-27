@@ -2,9 +2,10 @@
 
 - hosts: localhost
   become: true
-  tasks:
-  - name: Install neofetch
-    ansible.builtin.apt:
-      name: neofetch
-      state: latest
-      update_cache: yes
+  gather_facts: true
+  vars:
+    k3s_version: v1.25.4+k3s1
+  roles:
+    - role: config
+    - role: k3s
+    - role: patching
