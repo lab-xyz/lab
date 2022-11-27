@@ -1,9 +1,10 @@
 ---
 
 - hosts: localhost
+  become: true
   tasks:
   - name: Install neofetch
-    apt:
+    ansible.builtin.apt:
       name: neofetch
       state: latest
-      become: true
+      update_cache: yes
