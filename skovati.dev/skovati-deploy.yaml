@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skovati-deploy
+  labels:
+    app: skovati
+  namespace: skovati-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: skovati-dev
+  template:
+    metadata:
+      labels:
+        app: skovati-dev
+    spec:
+      containers:
+      - name: skovati-dev
+        image: ghcr.io/skovati/website:latest
+        ports:
+        - containerPort: 80
