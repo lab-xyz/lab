@@ -43,3 +43,8 @@ variable "ssh_public_key" {
   description = "SSH pubkey string"
   type        = string
 }
+
+variable "ssh_private_key" {
+  description = "SSH privkey string"
+  type        = string
+}

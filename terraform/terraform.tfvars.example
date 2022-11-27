@@ -11,8 +11,9 @@ region           = "us-ashburn-1"
 # VM Images: https://docs.oracle.com/en-us/iaas/images/
 vm_image_arm = "ocid1.image.oc1.iad.aaaaaaaam4d2tsohvgq7cqilhtcnlvp2zmzatb57xuprljhkvqgon73uzeqq"
 
-# SSH Pubkey
+# SSH keys for remote exec
 ssh_public_key = "ssh-ed25519 xxx..."
+ssh_private_key = "..."
 
 # OPTIONAL
 vm_name_template = "xyz-homelab"
