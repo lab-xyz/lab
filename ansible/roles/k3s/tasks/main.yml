@@ -21,3 +21,18 @@
     - ( ansible_facts.architecture is search("arm") and
         ansible_facts.userspace_bits == "64" ) or
       ansible_facts.architecture is search("aarch64")
+
+- name: Copy K3s service file
+  template:
+    src: "k3s.service.j2"
+    dest: "/etc/systemd/system/k3s-node.service"
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Enable and check K3s service
+  systemd:
+    name: k3s-node
+    daemon_reload: yes
+    state: restarted
+    enabled: yes
