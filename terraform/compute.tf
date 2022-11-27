@@ -32,7 +32,7 @@ resource "oci_core_instance" "vm_instance_ampere" {
         assign_public_ip          = true
         subnet_id                 = oci_core_subnet.homelab_subnet.id
         assign_private_dns_record = true
-        hostname_label            = join("", [var.vm_name_template, "-arm"])
+        hostname_label            = join("", [var.vm_name_template, "-arm", random_id.id.hex])
         private_ip                = join(".", ["10", "0", "0", 110])
         nsg_ids                   = [oci_core_network_security_group.homelab_nsg.id]
     }
