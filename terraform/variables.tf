@@ -48,3 +48,13 @@ variable "ssh_private_key" {
   description = "SSH privkey string"
   type        = string
 }
+
+variable "k3s_master_ip" {
+  description = "IP addr of k3s master, to pass to ansible"
+  type        = string
+}
+
+variable "k3s_token" {
+  description = "k3s token, to pass to ansible"
+  type        = string
+}
