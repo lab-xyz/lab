@@ -20,3 +20,6 @@ spec:
           secretKeyRef:
             name: cloudflare-api-skovati
             key: dns-token
+    dashboard:
+      enabled: true
+      domain:  "racknerd.border-universe.ts.net"
