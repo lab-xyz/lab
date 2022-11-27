@@ -42,7 +42,7 @@ resource "oci_core_instance" "vm_instance_ampere" {
             "echo 'This instance was provisioned by Terraform in Oracle Cloud region ${var.region}.' | sudo tee /etc/motd",
             "sudo apt update",
             "sudo apt install -y ansible git",
-            "ansible-pull -C ansible -U https://github.com/lab-xyz/lab.git -e 'k3s_master_ip=${var.k3s_master_ip} k3s_token=${var.k3s_token} k3s_args='--node-external-ip ${self.public_ip}'' ansible/site.yml",
+            "ansible-pull -C ansible -U https://github.com/lab-xyz/lab.git -e 'k3s_master_ip=${var.k3s_master_ip} k3s_token=${var.k3s_token} k3s_args="--node-external-ip ${self.public_ip}"' ansible/site.yml",
         ]
     }
 }
