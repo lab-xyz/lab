@@ -22,8 +22,8 @@
     group: root
     mode: 0644
 
-- name: Restart sshd
-  systemd:
-    name: sshd
-    state: restarted
-    enabled: yes
+# - name: Restart sshd
+#   systemd:
+#     name: sshd
+#     state: restarted
+#     enabled: yes
