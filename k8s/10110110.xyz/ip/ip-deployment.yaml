@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ip
+  labels:
+    owner: iofq
+    app: ip
+  namespace: iofq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ip
+  template:
+    metadata:
+      labels:
+        app: ip
+    spec:
+      containers:
+      - name: ip
+        image: ghcr.io/iofq/ip:latest
+        ports:
+        - containerPort: 8080
