@@ -29,4 +29,10 @@ resource "oci_core_instance" "vm_instance_ampere" {
         private_ip                = join(".", ["10", "0", "0", 110])
         nsg_ids                   = [oci_core_network_security_group.homelab_nsg.id]
     }
+
+    provisioner "remote-exec" {
+        inline = [
+            "echo 'This instance was provisioned by Terraform.' | sudo tee /etc/motd",
+        ]
+    }
 }
