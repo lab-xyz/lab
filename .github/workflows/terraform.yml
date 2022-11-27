@@ -3,16 +3,15 @@ name: Terraform Plan
 on:
   push:
     branches:
-      - master
-      - terraform
+      - **
     pull_request:
-      - master
+      - **
 jobs:
   terraform:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        workspace: ['xyz-homelab']
+        workspace: ['10110110']
     defaults:
       run:
         working-directory: ./terraform
