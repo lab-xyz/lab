@@ -1,0 +1,8 @@
+---
+
+- hosts: all
+  tasks:
+  - name: Install neofetch
+    apt:
+      name: neofetch
+      state: latest
