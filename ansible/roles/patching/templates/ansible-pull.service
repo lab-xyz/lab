@@ -1,0 +1,9 @@
+{{ ansible_managed|comment }}
+
+[Unit]
+Description=Automated ansible-pull
+After=network-online.target
+ 
+[Service]
+ExecStart=/bin/sh -c 'ansible-pull -U "{{ ansible_pull_url }}" {{ ansible_entrypoint }} -e k3s_master_ip={{ k3s_master_ip }} -e k3s_token={{ k3s_token }} -e k3s_public_ip={{ k3s_public_ip }}'
+TimeoutStopSec=600

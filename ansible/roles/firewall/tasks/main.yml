@@ -1,0 +1,41 @@
+---
+- name: Install fail2ban
+  apt:
+    pkg: fail2ban
+    state: present
+
+- name: Install ufw
+  apt:
+    pkg: ufw
+    state: present
+
+- name: Enable ufw
+  community.general.ufw:
+    state: enabled
+    policy: deny
+
+- name: Allow all in traffic over flannel-wg
+  community.general.ufw:
+    rule: allow
+    interface: flannel-wg
+    direction: in
+
+- name: Allow all out traffic over flannel-wg
+  community.general.ufw:
+    rule: allow
+    interface: flannel-wg
+    direction: out
+
+- name: Allow wireguard port
+  community.general.ufw:
+    rule: deny
+    port: 51820
+
+- name: Deny OpenSSH traffic
+  community.general.ufw:
+    rule: deny
+    port: ssh
+
+- name: Reload ufw
+  community.general.ufw:
+    state: reloaded
