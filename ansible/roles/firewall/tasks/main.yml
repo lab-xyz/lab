@@ -9,15 +9,22 @@
     pkg: ufw
     state: present
 
-- name: Enable ufw, deny by default
+- name: Enable ufw
   community.general.ufw:
     state: enabled
     policy: deny
 
-- name: Allow all traffic over flannel-wg
+- name: Allow all in traffic over flannel-wg
   community.general.ufw:
     rule: allow
     interface: flannel-wg
+    direction: in
+
+- name: Allow all out traffic over flannel-wg
+  community.general.ufw:
+    rule: allow
+    interface: flannel-wg
+    direction: out
 
 - name: Allow wireguard port
   community.general.ufw:
@@ -28,3 +35,7 @@
   community.general.ufw:
     rule: deny
     port: ssh
+
+- name: Reload ufw
+  community.general.ufw:
+    state: reloaded
