@@ -42,7 +42,7 @@ resource "oci_core_subnet" "homelab_subnet" {
 }
 
 resource "oci_core_security_list" "public-security-list" {
-  compartment_id = oci_identity_compartment.tfcompartment.id
+  compartment_id = oci_identity_compartment.tf-compartment.id
   vcn_id         = oci_core_vcn.homelab_vcn.id
   display_name   = "public-security-list"
 
