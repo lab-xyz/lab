@@ -7,13 +7,13 @@ resource "oci_core_vcn" "homelab_vcn" {
 
 resource "oci_core_network_security_group" "homelab_nsg" {
   compartment_id = oci_identity_compartment.tf-compartment.id
-  display_name   = "{var.compartment_name}-nsg"
+  display_name   = "${var.compartment_name}-nsg"
   vcn_id         = oci_core_vcn.homelab_vcn.id
 }
 
 resource "oci_core_internet_gateway" "homelab_ig" {
   compartment_id = oci_identity_compartment.tf-compartment.id
-  display_name   = "{var.compartment_name}-ig"
+  display_name   = "${var.compartment_name}-ig"
   vcn_id         = oci_core_vcn.homelab_vcn.id
 }
 
