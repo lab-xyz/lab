@@ -9,9 +9,9 @@
 
 - name: enable ansible-pull timer
   service:
-  name: ansible-pull.timer
-  state: started
-  enabled: yes
+    name: ansible-pull.timer
+    state: started
+    enabled: yes
 
 - name: install unattended-upgrades
   apt:
