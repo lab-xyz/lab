@@ -50,7 +50,7 @@ resource "oci_core_instance" "vm_instance_ampere" {
             "sudo apt update",
             "sudo apt update",
             "sudo apt install -y ansible git",
-            "ansible-pull -C ansible -U https://github.com/lab-xyz/lab.git -e k3s_master_ip=${var.k3s_master_ip} -e k3s_token=${var.k3s_token} -e k3s_public_ip=${self.public_ip} ansible/site.yml",
+            "ansible-pull -U https://github.com/lab-xyz/lab.git -e k3s_master_ip=${var.k3s_master_ip} -e k3s_token=${var.k3s_token} -e k3s_public_ip=${self.public_ip} ansible/site.yml",
         ]
     }
 }
