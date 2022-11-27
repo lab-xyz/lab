@@ -40,7 +40,7 @@ resource "oci_core_instance" "vm_instance_ampere" {
     provisioner "remote-exec" {
         inline = [
             "echo 'This instance was provisioned by Terraform in ${var.region}.' | sudo tee /etc/motd",
-            "sudo apt update && sudo apt install ansible git",
+            "sudo apt update && sudo apt install -y ansible git",
             "ansible-pull -C ansible -U https://github.com/lab-xyz/lab.git ansible/site.yml",
         ]
     }
