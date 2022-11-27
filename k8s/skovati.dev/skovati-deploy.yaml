@@ -19,5 +19,6 @@ spec:
       containers:
       - name: skovati-dev
         image: ghcr.io/skovati/website:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
