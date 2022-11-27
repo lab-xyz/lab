@@ -73,7 +73,7 @@ resource "oci_core_security_list" "public-security-list" {
     protocol    = "17"
     description = "Wireguard"
 
-    tcp_options {
+    udp_options {
       min = 51820
       max = 51820
     }
