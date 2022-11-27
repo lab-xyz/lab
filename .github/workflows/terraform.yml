@@ -1,11 +1,11 @@
-name: Terraform Plan
+name: Terraform Cloud
 
 on:
   push:
     branches:
-      - **
+      - "**"
     pull_request:
-      - **
+      - "**"
 jobs:
   terraform:
     runs-on: ubuntu-latest
