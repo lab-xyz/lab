@@ -40,11 +40,11 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ip-ingress-https
+  name: ip-ingress-http
   namespace: iofq
   annotations:
     kubernetes.io/ingress.class: "traefik"
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.entrypoints: web
     traefik.ingress.kubernetes.io/router.middlewares: iofq-redirect-http@kubernetescrd
 spec:
   rules:
