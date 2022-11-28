@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: skovati-cloudflare-issuer
+  name: skovati-cf-issuer
   namespace: skovati-dev
 spec:
   acme:
@@ -13,5 +13,5 @@ spec:
     - dns01:
         cloudflare:
           apiTokenSecretRef:
-            name: cloudflare-api-skovati
-            key: dns-token
+            name: skovati-cf-token-secret
+            key: api-token
