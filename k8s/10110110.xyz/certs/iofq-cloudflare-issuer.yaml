@@ -1,0 +1,33 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: iofq-cloudflare-issuer
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: acme@10110110.xyz
+    privateKeySecretRef:
+      name: iofq-letsencrypt
+    solvers:
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            name: iofq-cloudflare-api
+            key: api-token
+
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: iofq-cloudflare-issuer-staging
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: acme@10110110.xyz
+    privateKeySecretRef:
+      name: iofq-letsencrypt-staging
+    solvers:
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            name: iofq-cloudflare-api
+            key: api-token
