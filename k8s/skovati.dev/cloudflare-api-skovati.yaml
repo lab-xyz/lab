@@ -5,7 +5,7 @@ kind: Secret
 metadata:
     creationTimestamp: null
     name: cloudflare-api-skovati
-    namespace: kube-system
+    namespace: skovati-dev
 sops:
     kms: []
     gcp_kms: []
