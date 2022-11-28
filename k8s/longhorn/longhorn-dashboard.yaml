@@ -11,7 +11,7 @@ spec:
     - host: racknerd.border-universe.ts.net
       http:
         paths:
-          - path: /longhorn
+          - path: /
             pathType: Prefix
             backend:
               service:
