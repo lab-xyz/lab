@@ -17,7 +17,7 @@ metadata:
   namespace: skovati-dev
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    cert-manager.io/issuer: "skovati-cf-issuer"
+    cert-manager.io/issuer: "skovati-cf-issuer-prod"
 spec:
   tls:
   - hosts:

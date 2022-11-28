@@ -1,7 +1,27 @@
+---
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: skovati-cf-issuer
+  name: skovati-cf-issuer-prod
+  namespace: skovati-dev
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: acme@skovati.dev
+    privateKeySecretRef:
+      name: skovati-letsencrypt
+    solvers:
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            name: skovati-cf-token-secret
+            key: api-token
+
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: skovati-cf-issuer-staging
   namespace: skovati-dev
 spec:
   acme:
