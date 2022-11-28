@@ -16,9 +16,9 @@ metadata:
   name: ip-ingress-https
   namespace: iofq
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    kubernetes.io/ingress.class: "traefik"
     cert-manager.io/issuer: "iofq-cloudflare-issuer"
+    kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
 spec:
   tls:
   - hosts:
@@ -40,12 +40,12 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ip-ingress-http
+  name: ip-ingress-https
   namespace: iofq
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
-    traefik.ingress.kubernetes.io/router.middleware: iofq-redirect-http@kubernetescrd
     kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: iofq-redirect-http@kubernetescrd
 spec:
   rules:
   - host: ip.10110110.xyz
