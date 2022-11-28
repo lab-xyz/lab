@@ -16,10 +16,10 @@ metadata:
   namespace: flux-system
 spec:
   filterTags:
-    pattern: '.*latest.*'
+    pattern: 'latest'
   imageRepositoryRef:
     name: 10110110-ip
   policy:
-    numerical:
+    alphabetical:
       order: asc
 
