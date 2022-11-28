@@ -17,8 +17,12 @@ metadata:
   namespace: skovati-dev
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.tls.certresolver: le-skovati
+    cert-manager.io/issuer: "iofq-cloudflare-issuer"
 spec:
+  tls:
+  - hosts:
+    - skovati.dev
+    secretName: skovati-dev-tls
   rules:
     - host: skovati.dev
       http:
