@@ -1,0 +1,25 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: 10110110-ip
+  namespace: flux-system
+spec:
+  image: ghcr.io/iofq/ip
+  interval: 5m0s
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: 10110110-ip
+  namespace: flux-system
+spec:
+  filterTags:
+    pattern: latest
+  imageRepositoryRef:
+    name: 10110110-ip
+  policy:
+    numerical:
+      order: asc
+
