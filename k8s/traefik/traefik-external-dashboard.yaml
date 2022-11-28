@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`racknerd.board-universe.ts.net`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+    - match: Host(`racknerd.border-universe.ts.net`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
       kind: Rule
       services:
         - name: api@internal
