@@ -22,3 +22,4 @@ spec:
         image: ghcr.io/iofq/ip:latest
         ports:
         - containerPort: 8080
+        imagePullPolicy: Always
