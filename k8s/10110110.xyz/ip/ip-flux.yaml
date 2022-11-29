@@ -16,7 +16,7 @@ metadata:
   namespace: flux-system
 spec:
   filterTags:
-    pattern: '[0-9]+'
+    pattern: '^[0-9]+$'
   imageRepositoryRef:
     name: 10110110-ip
   policy:
