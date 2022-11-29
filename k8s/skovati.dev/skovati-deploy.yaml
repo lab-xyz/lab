@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: skovati-dev
-        image: ghcr.io/skovati/website:a971e1-1669682246 # {"$imagepolicy": "flux-system:skovati-dev-image-policy"}
+        image: ghcr.io/skovati/website:c029bd9-1669683128 # {"$imagepolicy": "flux-system:skovati-dev-image-policy"}
         imagePullPolicy: Always
         ports:
         - containerPort: 80
