@@ -9,7 +9,8 @@ spec:
     name: skovati-cf-issuer-staging
     kind: ClusterIssuer
   privateKey:
-    algorithm: Ed25519
+    algorithm: ECDSA
+    size: 521
     rotationPolicy: Always
   dnsNames:
   - "skovati.dev"
