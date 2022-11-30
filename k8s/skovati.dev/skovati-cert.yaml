@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: skovati-dev-tls
   issuerRef:
-    name: skovati-cf-issuer-staging
+    name: skovati-cf-issuer-prod
     kind: ClusterIssuer
   privateKey:
     algorithm: ECDSA
