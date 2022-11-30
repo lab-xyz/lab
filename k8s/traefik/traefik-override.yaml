@@ -11,3 +11,5 @@ spec:
     ports:
       web:
         redirectTo: websecure
+    deployment:
+      replicas: 2
