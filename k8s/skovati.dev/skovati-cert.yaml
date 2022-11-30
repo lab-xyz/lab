@@ -4,11 +4,12 @@ metadata:
   name: skovati-dev-tls-cert
   namespace: skovati-dev
 spec:
-  dnsNames:
-  - "skovati.dev"
-  - "*.skovati.dev"
+  secretName: skovati-dev-tls
   issuerRef:
     name: skovati-cf-issuer-staging
     kind: ClusterIssuer
-  secretName: skovati-dev-tls
-  keyAlgorithm: ecdsa
+  privateKey:
+    algorithm: Ed25519
+  dnsNames:
+  - "skovati.dev"
+  - "*.skovati.dev"
