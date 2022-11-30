@@ -11,7 +11,7 @@ spec:
   tls:
   - hosts:
     - start.skovati.dev
-    secretName: skovati-dev-tls
+    secretName: skovati-startpage-tls
   rules:
     - host: start.skovati.dev
       http:
