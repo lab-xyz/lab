@@ -1,0 +1,47 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: skovati-startpage-ingress
+  namespace: skovati-dev
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    cert-manager.io/issuer: "skovati-cf-issuer-prod"
+spec:
+  tls:
+  - hosts:
+    - start.skovati.dev
+    secretName: skovati-dev-tls
+  rules:
+    - host: start.skovati.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: skovati-startpage-svc
+                port:
+                  number: 8081
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: skovati-startpage-ingress-http
+  namespace: skovati-dev
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: skovati-dev-redirect-http@kubernetescrd
+spec:
+  rules:
+    - host: start.skovati.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: skovati-startpage-svc
+                port:
+                  number: 8081

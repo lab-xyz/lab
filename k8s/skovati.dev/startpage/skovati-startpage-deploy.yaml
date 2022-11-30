@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skovati-startpage-deploy
+  namespace: skovati-dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: skovati-startpage
+  template:
+    metadata:
+      labels:
+        app: skovati-startpage
+    spec:
+      containers:
+      - name: skovati-startpage
+        image: ghcr.io/skovati/startpage # {"$imagepolicy": "flux-system:skovati-dev-image-policy"}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
