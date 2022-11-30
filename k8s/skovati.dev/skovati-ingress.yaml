@@ -1,15 +1,4 @@
 ---
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: redirect-http
-  namespace: skovati-dev
-spec:
-  redirectScheme:
-    scheme: https
-    permanent: true
-
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -17,34 +6,11 @@ metadata:
   namespace: skovati-dev
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    cert-manager.io/issuer: "skovati-cf-issuer-staging"
 spec:
   tls:
   - hosts:
     - skovati.dev
     secretName: skovati-dev-tls
-  rules:
-    - host: skovati.dev
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: skovati-svc
-                port:
-                  number: 8080
-
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: skovati-ingress-http
-  namespace: skovati-dev
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
-    traefik.ingress.kubernetes.io/router.middlewares: skovati-dev-redirect-http@kubernetescrd
-spec:
   rules:
     - host: skovati.dev
       http:

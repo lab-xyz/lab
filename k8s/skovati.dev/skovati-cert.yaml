@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: skovati-dev-tls-cert
+  namespace: skovati-dev
+spec:
+  dnsNames:
+  - "skovati.dev"
+  - "*.skovati.dev"
+  issuerRef:
+    name: skovati-cf-issuer-staging
+    kind: ClusterIssuer
+  secretName: skovati-dev-tls
+  keyAlgorithm: ecdsa
