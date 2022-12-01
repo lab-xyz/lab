@@ -10,5 +10,5 @@ data:
     AccountStart month 1 00:00
     AccountingMax 6000 GBytes
 metadata:
-  name: torrc
+  name: tor-configmap
   namespace: tor-relay
