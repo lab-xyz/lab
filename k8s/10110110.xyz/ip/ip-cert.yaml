@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: ip-tls-cert
-  namespace: ip
+  namespace: app-ip
 spec:
   secretName: ip-tls
   issuerRef:
