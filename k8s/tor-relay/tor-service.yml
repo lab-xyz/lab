@@ -6,7 +6,6 @@ metadata:
 spec:
   selector:
     app: tor-relay
-  type: NodePort
   ports:
   - protocol: TCP
     port: 9001

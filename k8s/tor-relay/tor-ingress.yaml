@@ -1,0 +1,14 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: tor-relay-ingress
+  namespace: tor-relay
+spec:
+  entryPoints:
+    - other
+  routes:
+    match: HostSNI(`*`)
+    services:
+      - name: tor-relay-svc
+        port: 9001
