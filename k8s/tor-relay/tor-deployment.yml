@@ -14,7 +14,7 @@ spec:
         app: tor-relay
     spec:
       nodeSelector:
-        tor: true
+        tor: "true"
       containers:
       - name: tor-relay
         image: lab-xyz/tor-relay:latest

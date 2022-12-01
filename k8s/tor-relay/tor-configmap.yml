@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 data:
-  torrc: |
+  torrc: |-
     ORPort 9001
     ExitRelay 0
     Nickname riceahap
