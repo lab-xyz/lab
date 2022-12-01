@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tor-relay
+  namespace: tor-relay
+spec:
+  selector:
+    matchLabels:
+      app: tor-relay
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tor-relay
+    spec:
+      nodeSelector:
+        tor: true
+      containers:
+      - name: tor-relay
+        image: lab-xyz/tor-relay:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9001
+        volumeMounts:
+        - name: tor-data
+          mountPath: "/var/lib/tor"
+        - name: tor-config
+          mountPath: "/etc/tor"
+      volumes:
+      - name: tor-data
+        persistentVolumeClaim:
+          claimName: tor-relay-pvc
+      - name: tor-config
+        configMap:
+          name: tor-configmap
+          items:
+          - key: torrc
+            path: torrc
