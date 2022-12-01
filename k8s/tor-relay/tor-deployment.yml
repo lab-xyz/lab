@@ -23,9 +23,9 @@ spec:
         - containerPort: 9001
         volumeMounts:
         - name: tor-data
-          mountPath: "/var/lib/tor"
+          mountPath: /var/lib/tor
         - name: tor-config
-          mountPath: "/etc/tor"
+          mountPath: /etc/tor
       volumes:
       - name: tor-data
         persistentVolumeClaim:
