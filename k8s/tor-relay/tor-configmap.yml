@@ -6,8 +6,8 @@ data:
     ExitRelay 0
     Nickname riceahap
     DataDirectory /var/lib/tor
-    AccountRule sum
-    AccountStart month 1 00:00
+    AccountingRule sum
+    AccountingStart month 1 00:00
     AccountingMax 6000 GBytes
 metadata:
   name: tor-configmap
