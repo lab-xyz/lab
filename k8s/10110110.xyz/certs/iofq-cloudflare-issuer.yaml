@@ -1,8 +1,8 @@
 apiVersion: cert-manager.io/v1
-kind: Issuer
+kind: CLusterIssuer
 metadata:
   name: iofq-cloudflare-issuer
-  namespace: iofq
+  namespace: cert-manager
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
@@ -18,10 +18,10 @@ spec:
 
 ---
 apiVersion: cert-manager.io/v1
-kind: Issuer
+kind: CLusterIssuer
 metadata:
   name: iofq-cloudflare-issuer-staging
-  namespace: iofq
+  namespace: cert-manager
 spec:
   acme:
     server: https://acme-staging-v02.api.letsencrypt.org/directory
