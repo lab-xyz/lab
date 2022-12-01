@@ -1,5 +1,5 @@
 apiVersion: cert-manager.io/v1
-kind: CLusterIssuer
+kind: ClusterIssuer
 metadata:
   name: iofq-cloudflare-issuer
   namespace: cert-manager
@@ -18,7 +18,7 @@ spec:
 
 ---
 apiVersion: cert-manager.io/v1
-kind: CLusterIssuer
+kind: ClusterIssuer
 metadata:
   name: iofq-cloudflare-issuer-staging
   namespace: cert-manager
