@@ -17,7 +17,7 @@ spec:
         tor: "true"
       containers:
       - name: tor-relay
-        image: lab-xyz/tor-relay:latest
+        image: ghcr.io/lab-xyz/tor-relay:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 9001
