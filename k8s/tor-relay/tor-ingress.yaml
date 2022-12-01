@@ -6,8 +6,7 @@ metadata:
   namespace: tor-relay
 spec:
   entryPoints:
-    other:
-      address: ":9001"
+    - "other"
   routes:
     - match: HostSNI(`*`)
       services:
