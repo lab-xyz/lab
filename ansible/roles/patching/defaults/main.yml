@@ -3,4 +3,3 @@ ansible_entrypoint: ansible/site.yml
 ansible_pull_timer: |
   OnBootSec=5m
   OnCalendar=daily
-  RandomizedDelaySec=10m
