@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 data:
   torrc: |-
-    ORPort  198.23.146.220:9001 IPv4Only
+    ORPort 0.0.0.0:9001 IPv4Only
     ExitRelay 0
     Nickname riceahap
     DataDirectory /var/lib/tor

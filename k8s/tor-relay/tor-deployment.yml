@@ -15,6 +15,7 @@ spec:
     spec:
       nodeSelector:
         tor: "true"
+      hostNetwork: true
       containers:
       - name: tor-relay
         image: ghcr.io/lab-xyz/tor-relay:latest
