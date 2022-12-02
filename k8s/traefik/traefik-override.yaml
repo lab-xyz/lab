@@ -6,8 +6,8 @@ metadata:
 spec:
   valuesContent: |-
     additionalArguments:
-      - "--entryPoints.web.proxyProtocol.trustedIPs=127.0.0.1/32,10.42.0.0/32"
-      - "--entryPoints.web.forwardedHeaders.trustedIPs=127.0.0.1/32,10.42.0.0/32"
+      - "--entryPoints.web.proxyProtocol.insecure"
+      - "--entryPoints.web.forwardedHeaders.insecure"
     ports:
       web:
         redirectTo: websecure
