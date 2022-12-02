@@ -30,10 +30,4 @@ resource "oci_core_instance" "vm_instance_ampere" {
         nsg_ids                   = [oci_core_network_security_group.homelab_nsg.id]
     }
 
-    connection {
-        type        = "ssh"
-        host        = "${self.public_ip}"
-        user        = "ubuntu"
-        private_key = "${var.ssh_private_key}"
-    }
 }

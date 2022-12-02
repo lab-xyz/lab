@@ -13,6 +13,14 @@ resource "oci_core_volume_attachment" "volume_attachment" {
     display_name                        = "oci_block"
     is_pv_encryption_in_transit_enabled = true
     is_read_only                        = false
+
+    connection {
+        type        = "ssh"
+        host        = "${oci_core_instance.vm_instance_ampere.public_ip}"
+        user        = "ubuntu"
+        private_key = "${var.ssh_private_key}"
+    }
+
     provisioner "remote-exec" {
         inline = [
             "echo 'This instance was provisioned by Terraform in Oracle Cloud region ${var.region}.' | sudo tee /etc/motd",
