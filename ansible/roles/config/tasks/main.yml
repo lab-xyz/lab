@@ -22,8 +22,9 @@
     state: present
 
 - name: Create filesystem
-  fstype: btrfs
-  dev: /dev/sdb1
+  filesystem:
+    fstype: btrfs
+    dev: /dev/sdb1
 
 - name: Mount drive
   mount:
