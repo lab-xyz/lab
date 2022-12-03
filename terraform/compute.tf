@@ -18,7 +18,7 @@ resource "oci_core_instance" "vm_instance_ampere" {
     source_details {
         source_id   = var.vm_image_arm
         source_type = "image"
-        boot_volume_size_in_gbs = 50
+        boot_volume_size_in_gbs = 200
     }
 
     create_vnic_details {
@@ -26,8 +26,7 @@ resource "oci_core_instance" "vm_instance_ampere" {
         subnet_id                 = oci_core_subnet.homelab_subnet.id
         assign_private_dns_record = true
         hostname_label            = join("", [var.vm_name_template, "-arm"])
-        private_ip                = join(".", ["10", "0", "0", 110])
+        private_ip                = join(".", ["10", "0", "0", 111])
         nsg_ids                   = [oci_core_network_security_group.homelab_nsg.id]
     }
-
 }
