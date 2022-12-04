@@ -9,7 +9,7 @@ spec:
   tls:
   - hosts:
     - skovati.dev
-    - "*.skovati.dev"
+    - start.skovati.dev
     secretName: skovati-dev-tls
   rules:
     - host: skovati.dev
@@ -21,7 +21,7 @@ spec:
               service:
                 name: skovati-svc
                 port:
-                  number: 8080
+                  number: 80
     - host: start.skovati.dev
       http:
         paths:
@@ -31,4 +31,4 @@ spec:
               service:
                 name: skovati-startpage-svc
                 port:
-                  number: 8081
+                  number: 80
