@@ -16,6 +16,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
+  targetNamespace: kube-system
   chart:
     spec:
       chart: nginx-ingress
