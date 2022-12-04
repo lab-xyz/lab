@@ -5,6 +5,7 @@ metadata:
   name: skovati-ingress
   namespace: skovati-dev
 spec:
+  ingressClassName: nginx
   tls:
   - hosts:
     - skovati.dev
