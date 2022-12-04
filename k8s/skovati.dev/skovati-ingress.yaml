@@ -4,8 +4,6 @@ kind: Ingress
 metadata:
   name: skovati-ingress
   namespace: skovati-dev
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
 spec:
   tls:
   - hosts:
