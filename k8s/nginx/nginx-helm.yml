@@ -17,6 +17,7 @@ metadata:
 spec:
   interval: 5m
   targetNamespace: kube-system
+  releaseName: nginx-ingress
   chart:
     spec:
       chart: nginx-ingress
