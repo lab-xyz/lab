@@ -2,24 +2,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ip-ingress
-  namespace: app-ip
+  name: iofq-web-ingress
+  namespace: iofq-web
   annotations:
     kubernetes.io/ingress.class: "nginx"
 spec:
   tls:
   - hosts:
     - 10110110.xyz
-    - www.10110110.xyz
     secretName: iofq-web-tls
   rules:
-    - host: *.10110110.xyz
+    - host: 10110110.xyz
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: ip-service
+                name: iofq-web-service
                 port:
-                  number: 8080
+                  number: 80

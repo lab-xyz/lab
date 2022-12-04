@@ -4,7 +4,7 @@ metadata:
   name: iofq-tls-cert
   namespace: iofq-web
 spec:
-  secretName: iofq-tls
+  secretName: iofq-web-tls
   issuerRef:
     name: iofq-cloudflare-issuer
     kind: ClusterIssuer

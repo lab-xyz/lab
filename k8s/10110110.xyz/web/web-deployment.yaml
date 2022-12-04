@@ -17,7 +17,7 @@ spec:
         app: iofq-web
     spec:
       containers:
-      - name: ip
+      - name: web
         image: ghcr.io/iofq/iofq.net:latest
         ports:
         - containerPort: 80
