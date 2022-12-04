@@ -30,13 +30,3 @@ resource "oci_core_instance" "vm_instance_ampere" {
     }
 
 }
-
-resource "oci_core_vnic_attachment" "secondary_vnic" {
-    create_vnic_details {
-        assign_public_ip          = true
-        subnet_id                 = oci_core_subnet.homelab_subnet.id
-        hostname_label            = join("", [var.vm_name_template, "-arm-2"])
-        nsg_ids                   = [oci_core_network_security_group.homelab_nsg.id]
-    }
-    instance_id = oci_core_instance.vm_instance_ampere.id
-}
