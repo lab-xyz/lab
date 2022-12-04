@@ -33,7 +33,7 @@
 
 - name: Deny OpenSSH traffic
   community.general.ufw:
-    rule: allow
+    rule: deny
     port: ssh
 
 - name: Reload ufw
