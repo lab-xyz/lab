@@ -12,13 +12,13 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: nginx-ingess
+  name: nginx-ingress
   namespace: flux-system
 spec:
   interval: 5m
   chart:
     spec:
-      chart: nginx-ingess
+      chart: nginx-ingress
       version: '>=4'
       sourceRef:
         kind: HelmRepository
