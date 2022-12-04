@@ -29,4 +29,4 @@ spec:
       interval: 1m
   values:
     controller:
-      kind: DaemonSet
+      kind: daemonset
