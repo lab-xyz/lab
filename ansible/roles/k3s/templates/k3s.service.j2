@@ -8,6 +8,7 @@ Type=notify
 ExecStartPre=-/sbin/modprobe br_netfilter
 ExecStartPre=-/sbin/modprobe overlay
 ExecStart=/usr/local/bin/k3s agent --server https://{{ k3s_master_ip }}:6443 --token {{ k3s_token }} {{ k3s_args | default("") }}
+ExecStartPost=/usr/local/bin/k3s kubectl annotate nodes $HOSTNAME kilo.squat.ai/force-internal-ip=''
 KillMode=process
 Delegate=yes
 # Having non-zero Limit*s causes performance problems due to accounting overhead
