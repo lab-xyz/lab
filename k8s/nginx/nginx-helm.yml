@@ -7,3 +7,6 @@ spec:
   chart: nginx-ingress
   repo: https://helm.nginx.com/stable
   targetNamespace: kube-system
+  valuesContent: |-
+    controller:
+      replicaCount: 3

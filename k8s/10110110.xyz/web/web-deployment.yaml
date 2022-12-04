@@ -2,24 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ip
+  name: iofq-web
   labels:
-    owner: iofq
-    app: ip
-  namespace: app-ip
+    app: iofq-web
+  namespace: iofq-web
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: ip
+      app: iofq-web
   template:
     metadata:
       labels:
-        app: ip
+        app: iofq-web
     spec:
       containers:
       - name: ip
-        image: ghcr.io/iofq/ip:latest
+        image: ghcr.io/iofq/iofq.net:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         imagePullPolicy: Always

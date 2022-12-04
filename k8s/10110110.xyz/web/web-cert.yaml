@@ -1,10 +1,10 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: ip-tls-cert
-  namespace: app-ip
+  name: iofq-tls-cert
+  namespace: 10110110.xyz
 spec:
-  secretName: ip-tls
+  secretName: iofq-tls
   issuerRef:
     name: iofq-cloudflare-issuer
     kind: ClusterIssuer
@@ -13,4 +13,5 @@ spec:
     size: 384
     rotationPolicy: Always
   dnsNames:
-  - "ip.10110110.xyz"
+  - "10110110.xyz"
+  - "*.10110110.xyz"
