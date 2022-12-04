@@ -18,7 +18,7 @@ resource "oci_core_instance" "vm_instance_ampere" {
     source_details {
         source_id   = var.vm_image_arm
         source_type = "image"
-        boot_volume_size_in_gbs = 50
+        boot_volume_size_in_gbs = 200
     }
 
     create_vnic_details {
