@@ -7,9 +7,7 @@ resources:
 - image-policy/image-policy-iofq.yaml
 - image-policy/image-policy-skovati-dev.yaml
 - image-policy/image-policy-skovati-startpage.yaml
-- kustomization/kustomization-lab-xyz.yaml
 - kustomization/kustomization-sops-secrets.yaml
-- repos/repo-git-lab-xyz.yaml
 - repos/repo-helm-nginx
 - repos/repo-iofq-web.yaml
 - repos/repo-skovati-dev.yaml
