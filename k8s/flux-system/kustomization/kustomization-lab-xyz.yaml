@@ -1,0 +1,19 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  annotations:
+    reconcile.fluxcd.io/requestedAt: "2022-12-04T16:58:35.033681971-06:00"
+  labels:
+    kustomize.toolkit.fluxcd.io/name: flux-system
+    kustomize.toolkit.fluxcd.io/namespace: flux-system
+  name: flux-system
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./k8s
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+
