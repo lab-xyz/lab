@@ -1,0 +1,19 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: prom-kube
+  namespace: flux-system
+spec:
+  interval: 5m
+  targetNamespace: monitoring
+  releaseName: monitoring
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: '>=43'
+      sourceRef:
+        kind: HelmRepository
+        name: prom-repo
+        namespace: flux-system
+      interval: 1m
