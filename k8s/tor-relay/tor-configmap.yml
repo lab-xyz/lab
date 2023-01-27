@@ -9,7 +9,7 @@ data:
     DataDirectory /var/lib/tor
     AccountingRule sum
     AccountingStart month 1 00:00
-    AccountingMax 6000 GBytes
+    AccountingMax 12000 GBytes
 metadata:
   name: tor-configmap
   namespace: tor-relay
