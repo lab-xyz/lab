@@ -10,6 +10,7 @@ data:
     AccountingRule sum
     AccountingStart month 1 00:00
     AccountingMax 12000 GBytes
+    BandwidthRate 5 MBytes
 metadata:
   name: tor-configmap
   namespace: tor-relay
