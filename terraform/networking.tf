@@ -83,10 +83,10 @@ resource "oci_core_security_list" "public-security-list" {
     stateless   = false
     source      = "0.0.0.0/0"
     source_type = "CIDR_BLOCK"
-    protocol    = "all"
+    protocol    = "6"
     description = "MC"
 
-    udp_options {
+    tcp_options {
       min = 25565
       max = 25565
     }
