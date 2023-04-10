@@ -24,8 +24,7 @@ spec:
     replicaCount: 1
 
     ## Configure resource requests and limits
-    ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
-    ##
+    ## ref: http://kubernetes.io/docs/user-guide/compute-resources/ #
     resources:
       requests:
         memory: 2048Mi
@@ -116,7 +115,7 @@ spec:
       # If you adjust this, you may need to adjust resources.requests above to match.
       memory: 1024M
       serviceAnnotations: {}
-      serviceType: ClusterIP
+      serviceType: LoadBalancer
       # Set the external port of the service, usefull when using the LoadBalancer service type
       servicePort: 25565
       clusterIP:
