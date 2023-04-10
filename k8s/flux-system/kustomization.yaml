@@ -6,5 +6,5 @@ resources:
 - image-policy/image-automation.yaml
 - image-policy/image-policy-iofq.yaml
 - kustomization/kustomization-sops-secrets.yaml
-- repos/repo-helm-nginx
+- repos/repo-helm-nginx.yaml
 - repos/repo-iofq-web.yaml
