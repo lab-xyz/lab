@@ -26,6 +26,18 @@
     interface: kilo0
     direction: out
 
+- name: Allow all in traffic over kube
+  community.general.ufw:
+    rule: allow
+    interface: kube-bridge
+    direction: in
+
+- name: Allow all out traffic over kube
+  community.general.ufw:
+    rule: allow
+    interface: kube-bridge
+    direction: out
+
 - name: Allow wireguard port
   community.general.ufw:
     rule: allow
