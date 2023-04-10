@@ -6,8 +6,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  targetNamespace: kube-system
-  releaseName: nginx-ingress
+  targetNamespace: minecraft
+  releaseName: itzg-minecraft
   chart:
     spec:
       chart: minecraft
