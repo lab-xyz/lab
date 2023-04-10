@@ -8,3 +8,4 @@ resources:
 - kustomization/kustomization-sops-secrets.yaml
 - repos/repo-helm-nginx.yaml
 - repos/repo-iofq-web.yaml
+- repos/repo-helm-itzg.yaml
