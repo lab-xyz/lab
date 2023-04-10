@@ -1,0 +1,168 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minecraft
+  namespace: flux-system
+spec:
+  interval: 5m
+  targetNamespace: kube-system
+  releaseName: nginx-ingress
+  chart:
+    spec:
+      chart: minecraft
+      sourceRef:
+        kind: HelmRepository
+        name: itzg-minecraft-repo
+        namespace: flux-system
+      interval: 1m
+  values:
+    image:
+      repository: itzg/minecraft-server
+      tag: latest
+      pullPolicy: IfNotPresent
+    replicaCount: 1
+
+    ## Configure resource requests and limits
+    ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+    ##
+    resources:
+      requests:
+        memory: 2048Mi
+        cpu: 500m
+    strategyType: Recreate
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+    securityContext:
+      # Security context settings
+      runAsUser: 1000
+      fsGroup: 2000
+    # Most of these map to environment variables. See Minecraft for details:
+    # https://hub.docker.com/r/itzg/minecraft-server/
+    livenessProbe:
+      command:
+        - mc-health
+      initialDelaySeconds: 30
+      periodSeconds: 5
+      failureThreshold: 20
+      successThreshold: 1
+      timeoutSeconds: 1
+    readinessProbe:
+      command:
+        - mc-health
+      initialDelaySeconds: 30
+      periodSeconds: 5
+      failureThreshold: 20
+      successThreshold: 1
+      timeoutSeconds: 1
+    startupProbe:
+      command:
+        - mc-health
+      enabled: false
+      failureThreshold: 30
+      periodSeconds: 10
+    # extraVolumes:
+    #   - volumeMounts:
+    #       - name: nfs
+    #         mountPath: /mnt/volume
+    #         readOnly: true
+    #     volumes:
+    #       - name: nfs
+    #         server: some.nfs.server.com
+    #         path: /
+    #         mountOptions:
+    #           - port=2049
+    #           - hard
+    #           - vers=4
+    extraVolumes: []
+
+    minecraftServer:
+      eula: "FALSE"
+      version: "LATEST"
+      type: "VANILLA"
+      ftbLegacyJavaFixer: false
+      difficulty: easy
+      whitelist:
+      maxPlayers: 10
+      maxWorldSize: 15000
+      allowNether: true
+      announcePlayerAchievements: true
+      enableCommandBlock: true
+      forcegameMode: false
+      generateStructures: true
+      hardcore: false
+      maxBuildHeight: 256
+      maxTickTime: 60000
+      spawnAnimals: true
+      spawnMonsters: true
+      spawnNPCs: true
+      spawnProtection: 16
+      viewDistance: 24
+      gameMode: survival
+      # Message of the Day
+      motd: "hell yeah"
+      pvp: false
+      levelType: DEFAULT
+      worldSaveName: world
+      forceReDownload: false
+      downloadModpackUrl:
+      removeOldMods: false
+      vanillaTweaksShareCodes: []
+      # Check accounts against Minecraft account service.
+      onlineMode: true
+      # Require public key to be signed by Mojang to join
+      enforceSecureProfile: true
+      # If you adjust this, you may need to adjust resources.requests above to match.
+      memory: 1024M
+      serviceAnnotations: {}
+      serviceType: ClusterIP
+      # Set the external port of the service, usefull when using the LoadBalancer service type
+      servicePort: 25565
+      clusterIP:
+      loadBalancerIP:
+      # loadBalancerSourceRanges: []
+      ## Set the externalTrafficPolicy in the Service to either Cluster or Local
+      # externalTrafficPolicy: Cluster
+      externalIPs:
+
+      # A list of Spigot resources/plugins IDs to download.
+
+      query:
+        # If you enable this, your server will be "published" to Gamespy
+        enabled: false
+        port: 25565
+
+    ## Additional minecraft container environment variables
+    ## Values can be either variable values or `valueFrom` yaml
+    ##
+    extraEnv:
+      {}
+      # some_variable: some value
+      # another_variable:
+      #   valueFrom:
+      #     fieldRef:
+      #       fieldPath: status.hostIP
+
+    ## Additional environment variables to add to the minecraft container from
+    ## ConfigMaps and Secrets
+    ##
+    envFrom: []
+
+    persistence:
+      annotations: {}
+      ## minecraft data Persistent Volume Storage Class
+      ## If defined, storageClassName: <storageClass>
+      ## If set to "-", storageClassName: "", which disables dynamic provisioning
+      ## If undefined (the default) or set to null, no storageClassName spec is
+      ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+      ##   GKE, AWS & OpenStack)
+      ##
+      storageClass: "longhorn"
+      dataDir:
+        # Set this to false if you don't care to persist state between restarts.
+        enabled: true
+        Size: 1Gi
+        # existingClaim: nil
+        ## specify a subpath in the volume where the data is. Useful when sharing volumes with other apps.
+        # subPath: /path/to/dataDir
