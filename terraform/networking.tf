@@ -78,6 +78,19 @@ resource "oci_core_security_list" "public-security-list" {
       max = 51820
     }
   }
+
+  ingress_security_rules {
+    stateless   = false
+    source      = "0.0.0.0/0"
+    source_type = "CIDR_BLOCK"
+    protocol    = "all"
+    description = "MC"
+
+    udp_options {
+      min = 25565
+      max = 25565
+    }
+  }
 }
 
 resource "oci_core_network_security_group_security_rule" "homelab-network-security-group-list-ingress" {
