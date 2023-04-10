@@ -83,6 +83,7 @@ spec:
       ftbLegacyJavaFixer: false
       difficulty: easy
       whitelist:
+      ops: cjriddz,k359
       maxPlayers: 10
       maxWorldSize: 15000
       allowNether: true
