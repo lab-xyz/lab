@@ -116,7 +116,7 @@ spec:
       # If you adjust this, you may need to adjust resources.requests above to match.
       memory: 1024M
       serviceAnnotations: {}
-      serviceType: LoadBalancer
+      serviceType: NodePort
       # Set the external port of the service, usefull when using the LoadBalancer service type
       servicePort: 25565
       clusterIP:
