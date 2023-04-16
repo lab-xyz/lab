@@ -29,6 +29,8 @@ spec:
       requests:
         memory: 512Mi
         cpu: 500m
+      limits:
+        memory: 1024Mi
     strategyType: Recreate
     nodeSelector: {}
     tolerations: []
