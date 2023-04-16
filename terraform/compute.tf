@@ -32,7 +32,7 @@ resource "oci_core_instance" "vm_instance_ampere" {
 
     connection {
         type        = "ssh"
-        host        = "${oci_core_instance.vm_instance_ampere.public_ip}"
+        host        = "${oci_core_instance.vm_instance_ampere[0].public_ip}"
         user        = "ubuntu"
         private_key = "${var.ssh_private_key}"
     }
@@ -43,7 +43,7 @@ resource "oci_core_instance" "vm_instance_ampere" {
             "sudo apt update",
             "sudo apt update",
             "sudo apt install -y ansible git",
-            "ansible-pull -U https://github.com/lab-xyz/lab.git -e k3s_master_ip=${var.k3s_master_ip} -e k3s_token=${var.k3s_token} -e k3s_public_ip=${oci_core_instance.vm_instance_ampere.public_ip} ansible/site.yml",
+            "ansible-pull -U https://github.com/lab-xyz/lab.git -e k3s_master_ip=${var.k3s_master_ip} -e k3s_token=${var.k3s_token} -e k3s_public_ip=${oci_core_instance.vm_instance_ampere[0].public_ip} ansible/site.yml",
         ]
     }
 
@@ -78,7 +78,7 @@ resource "oci_core_instance" "vm_instance_x86_64" {
 
     connection {
         type        = "ssh"
-        host        = "${oci_core_instance.vm_instance_ampere.public_ip}"
+        host        = "${oci_core_instance.vm_instance_x86_64[0].public_ip}"
         user        = "ubuntu"
         private_key = "${var.ssh_private_key}"
     }
@@ -89,7 +89,7 @@ resource "oci_core_instance" "vm_instance_x86_64" {
             "sudo apt update",
             "sudo apt update",
             "sudo apt install -y ansible git",
-            "ansible-pull -U https://github.com/lab-xyz/lab.git -e k3s_master_ip=${var.k3s_master_ip} -e k3s_token=${var.k3s_token} -e k3s_public_ip=${oci_core_instance.vm_instance_ampere.public_ip} ansible/site.yml",
+            "ansible-pull -U https://github.com/lab-xyz/lab.git -e k3s_master_ip=${var.k3s_master_ip} -e k3s_token=${var.k3s_token} -e k3s_public_ip=${oci_core_instance.vm_instance_x86_64[0].public_ip} ansible/site.yml",
         ]
     }
 
