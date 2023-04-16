@@ -1,6 +1,6 @@
 resource "oci_core_instance" "vm_instance_ampere" {
     count = 1
-    availability_domain                 = data.oci_identity_availability_domains.ads.availability_domains[3].name
+    availability_domain                 = data.oci_identity_availability_domains.ads.availability_domains[2].name
     compartment_id                      = oci_identity_compartment.tf-compartment.id
     shape                               = "VM.Standard.A1.Flex"
     display_name                        = join("", [var.vm_name_template, "-arm"]) 
@@ -51,7 +51,7 @@ resource "oci_core_instance" "vm_instance_ampere" {
 
 resource "oci_core_instance" "vm_instance_x86_64" {
     count = 1
-    availability_domain                 = data.oci_identity_availability_domains.ads.availability_domains[3].name
+    availability_domain                 = data.oci_identity_availability_domains.ads.availability_domains[2].name
     compartment_id                      = oci_identity_compartment.tf-compartment.id
     shape                               = "VM.Standard.E2.1.Micro"
     display_name                        = join("", [var.vm_name_template, "-amd64"]) 
