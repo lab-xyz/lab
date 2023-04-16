@@ -27,7 +27,7 @@ spec:
     ## ref: http://kubernetes.io/docs/user-guide/compute-resources/ #
     resources:
       requests:
-        memory: 1024Mi
+        memory: 512Mi
         cpu: 500m
     strategyType: Recreate
     nodeSelector: {}
@@ -114,7 +114,7 @@ spec:
       # Require public key to be signed by Mojang to join
       enforceSecureProfile: true
       # If you adjust this, you may need to adjust resources.requests above to match.
-      memory: 1024M
+      memory: 512M
       serviceAnnotations: {}
       serviceType: LoadBalancer
       # Set the external port of the service, usefull when using the LoadBalancer service type
