@@ -14,6 +14,6 @@ data "oci_identity_availability_domains" "ads" {
 }
 
 data "oci_core_boot_volumes" "homelab_boot_volumes" {
-  availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
+  availability_domain = data.oci_identity_availability_domains.ads.availability_domains[3].name
   compartment_id      = oci_identity_compartment.tf-compartment.id
 }
