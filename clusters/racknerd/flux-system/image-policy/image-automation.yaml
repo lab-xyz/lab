@@ -24,6 +24,6 @@ spec:
     kind: GitRepository
     name: flux-system
   update:
-    path: ./k8s
+    path: ./clusters/racknerd
     strategy: Setters
 
