@@ -18,6 +18,11 @@ variable "vm_image_arm" {
   type        = string
 }
 
+variable "vm_image_amd64" {
+  description = "The OCID of the amd64 VM image to deploy."
+  type        = string
+}
+
 variable "vm_name_template" {
   description = ""
   type        = string

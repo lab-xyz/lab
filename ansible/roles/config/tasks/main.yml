@@ -5,23 +5,3 @@
     value: "1"
     state: present
     reload: yes
-
-- name: Partition extra drive
-  parted:
-    device: /dev/sdb
-    number: 1
-    flags: [lvm]
-    state: present
-
-- name: Create filesystem
-  filesystem:
-    fstype: btrfs
-    dev: /dev/sdb1
-
-- name: Mount drive
-  mount:
-    fstype: btrfs
-    src: /dev/sdb1
-    path: /var/lib/longhorn
-    opts: rw
-    state: mounted
