@@ -27,7 +27,7 @@ spec:
     ## ref: http://kubernetes.io/docs/user-guide/compute-resources/ #
     resources:
       requests:
-        memory: 2048Mi
+        memory: 1024Mi
         cpu: 500m
     strategyType: Recreate
     nodeSelector: {}
