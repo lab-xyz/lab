@@ -3,3 +3,9 @@ kind: Kustomization
 resources:
 - gotk-components.yaml
 - gotk-sync.yaml
+- image-policy/image-automation.yaml
+- image-policy/image-policy-iofq.yaml
+- kustomization/kustomization-sops-secrets.yaml
+- repos/repo-helm-nginx.yaml
+- repos/repo-iofq-web.yaml
+- repos/repo-helm-itzg.yaml
