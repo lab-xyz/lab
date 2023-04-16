@@ -63,7 +63,7 @@ resource "oci_core_instance" "vm_instance_x86_64" {
     }
 
     source_details {
-        source_id   = var.vm_image_arm
+        source_id   = var.vm_image_amd64
         source_type = "image"
         boot_volume_size_in_gbs = 100
     }
