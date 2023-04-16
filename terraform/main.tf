@@ -3,6 +3,9 @@ terraform {
 
     cloud {
         organization = "lab-xyz"
+        workspaces {
+            name = "xyz-homelab"
+        }
     }
 
     required_providers {
