@@ -1,0 +1,9 @@
+apiVersion: kilo.squat.ai/v1alpha1
+kind: Peer
+metadata:  
+  name: iofq-t14
+spec:  
+  allowedIPs:  
+  - 10.4.0.100/32 
+  publicKey: ihN3+TZTynIOjHFq5doJM7e1YOxf9UneS8WJGU7avkM=
+  persistentKeepalive: 10

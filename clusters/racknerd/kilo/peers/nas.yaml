@@ -1,0 +1,9 @@
+apiVersion: kilo.squat.ai/v1alpha1
+kind: Peer
+metadata:  
+  name: ubuntu-node 
+spec:  
+  allowedIPs:  
+  - 10.4.0.101/32 
+  publicKey: sUNnA3yqQeoPoRX3K1zVS0Ox2L5HxXkBdWlsy8yZQn0=
+  persistentKeepalive: 10
