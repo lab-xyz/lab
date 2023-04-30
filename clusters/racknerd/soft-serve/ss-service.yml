@@ -8,6 +8,6 @@ spec:
     app: soft-serve
   ports:
   - protocol: TCP
-    port: 2323
+    port: 22
     targetPort: 23231
   type: LoadBalancer
