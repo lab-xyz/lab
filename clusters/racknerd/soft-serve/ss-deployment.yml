@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: soft-serve
+  namespace: soft-serve
+spec:
+  selector:
+    matchLabels:
+      app: soft-serve
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: soft-serve
+    spec:
+      containers:
+      - name: tor-relay
+        image: charmcli/soft-serve
+        tag: v0.4
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 23231
+        volumeMounts:
+        - name: soft-serve-data
+          mountPath: /soft-serve
+      volumes:
+      - name: soft-serve-data
+        persistentVolumeClaim:
+          claimName: soft-serve-pvc
