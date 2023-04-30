@@ -14,7 +14,7 @@ spec:
         app: soft-serve
     spec:
       containers:
-      - name: tor-relay
+      - name: soft-serve
         image: charmcli/soft-serve
         tag: v0.4
         imagePullPolicy: Always
