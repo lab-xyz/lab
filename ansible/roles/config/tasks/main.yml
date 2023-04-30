@@ -5,3 +5,10 @@
     value: "1"
     state: present
     reload: yes
+
+- name: Setup alternate SSH port
+  lineinfile:
+    dest: "/etc/ssh/sshd_config"
+    regexp: "^Port"
+    line: "Port 2022"
+  notify: "Restart sshd"
