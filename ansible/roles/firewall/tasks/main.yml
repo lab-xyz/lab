@@ -58,6 +58,11 @@
     rule: allow
     port: 25565
 
+- name: Allow alt ssh port
+  community.general.ufw:
+    rule: allow
+    port: 2022
+
 - name: Deny OpenSSH traffic
   community.general.ufw:
     rule: deny

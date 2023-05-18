@@ -21,14 +21,14 @@ spec:
       repository: itzg/minecraft-server
       tag: latest
       pullPolicy: IfNotPresent
-    replicaCount: 0
+    replicaCount: 1
 
     ## Configure resource requests and limits
     ## ref: http://kubernetes.io/docs/user-guide/compute-resources/ #
     resources:
       requests:
-        memory: 512Mi
-        cpu: 500m
+        memory: 1024Mi
+        cpu: 1000m
       limits:
         memory: 1024Mi
     strategyType: Recreate
@@ -116,7 +116,7 @@ spec:
       # Require public key to be signed by Mojang to join
       enforceSecureProfile: true
       # If you adjust this, you may need to adjust resources.requests above to match.
-      memory: 512M
+      memory: 1024M
       serviceAnnotations: {}
       serviceType: LoadBalancer
       # Set the external port of the service, usefull when using the LoadBalancer service type
@@ -164,7 +164,7 @@ spec:
       dataDir:
         # Set this to false if you don't care to persist state between restarts.
         enabled: true
-        Size: 1Gi
+        Size: 2Gi
         # existingClaim: nil
         ## specify a subpath in the volume where the data is. Useful when sharing volumes with other apps.
         # subPath: /path/to/dataDir
