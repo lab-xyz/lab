@@ -6,6 +6,12 @@
     state: present
     reload: yes
 
+- name: Update repositories and install wireguard-tools
+  ansible.builtin.apt:
+    name: wireguard-tools
+    state: present
+    update_cache: yes
+
 - name: Setup alternate SSH port
   lineinfile:
     dest: "/etc/ssh/sshd_config"
