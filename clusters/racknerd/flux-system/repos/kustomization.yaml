@@ -3,5 +3,4 @@ kind: Kustomization
 resources:
 - repo-helm-itzg.yaml
 - repo-helm-nginx.yaml
-- repo-helm-zalando.yaml
 - repo-iofq-web.yaml
