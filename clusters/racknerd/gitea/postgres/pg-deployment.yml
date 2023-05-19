@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitea-pg
+  namespace: gitea
+spec:
+  selector:
+    matchLabels:
+      app: gitea-pg
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gitea-pg
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:15
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: pg-secret
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pg-secret
+              key: POSTGRES_PASSWORD
+        volumeMounts:
+        - name: postgresdb
+          mountPath: /var/lib/postgresql
+      volumes:
+      - name: postgresdb
+        persistentVolumeClaim:
+          claimName: gitea-db-pvc
