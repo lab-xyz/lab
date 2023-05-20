@@ -9,7 +9,6 @@
     pkg: ufw
     state: present
 
-
 - name: Disable ufw logging
   community.general.ufw:
     logging: "off"
@@ -19,6 +18,11 @@
     path: /etc/default/ufw
     regexp: "^IPV6="
     line: IPV6=no
+
+- name: Disable ufw (IPV6 prevents it from starting)
+  community.general.ufw:
+    state: disabled
+    policy: deny
 
 - name: Enable ufw
   community.general.ufw:
@@ -64,9 +68,9 @@
     rule: allow
     port: 2022
 
-- name: Deny OpenSSH traffic
+- name: Allow OpenSSH traffic
   community.general.ufw:
-    rule: deny
+    rule: allow
     port: ssh
 
 - name: Reload ufw
