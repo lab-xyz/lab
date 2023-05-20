@@ -14,10 +14,6 @@
     state: enabled
     policy: deny
 
-- name: Disable ufw logging
-  community.general.ufw:
-    logging: "off"
-
 - name: Disable ipv6
   ansible.builtin.lineinfile:
     path: /etc/default/ufw
