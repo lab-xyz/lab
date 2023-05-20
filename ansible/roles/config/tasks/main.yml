@@ -16,5 +16,5 @@
   lineinfile:
     dest: "/etc/ssh/sshd_config"
     regexp: "^Port"
-    line: "Port 2022"
+    line: "Port 22"
   notify: "Restart sshd"
