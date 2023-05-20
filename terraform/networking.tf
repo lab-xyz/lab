@@ -70,6 +70,19 @@ resource "oci_core_security_list" "public-security-list" {
     stateless   = false
     source      = "0.0.0.0/0"
     source_type = "CIDR_BLOCK"
+    protocol    = "6"
+    description = "ALT SSH traffic"
+
+    tcp_options {
+      min = 2022
+      max = 2022
+    }
+  }
+
+  ingress_security_rules {
+    stateless   = false
+    source      = "0.0.0.0/0"
+    source_type = "CIDR_BLOCK"
     protocol    = "17"
     description = "Wireguard"
 
