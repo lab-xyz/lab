@@ -9,16 +9,21 @@
     pkg: ufw
     state: present
 
-- name: Enable ufw
+
+- name: Disable ufw logging
   community.general.ufw:
-    state: enabled
-    policy: deny
+    logging: "off"
 
 - name: Disable ipv6
   ansible.builtin.lineinfile:
     path: /etc/default/ufw
     regexp: "^IPV6="
     line: IPV6=no
+
+- name: Enable ufw
+  community.general.ufw:
+    state: enabled
+    policy: deny
 
 - name: Allow all in traffic over wg
   community.general.ufw:
