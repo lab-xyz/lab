@@ -4,4 +4,3 @@ resources:
 - repo-helm-itzg.yaml
 - repo-helm-nginx.yaml
 - repo-iofq-web.yaml
-- repo-helm-gitea.yaml
