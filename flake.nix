@@ -10,6 +10,7 @@
         fluxcd
         helm
         kubectl
+        sops
       ];
     };
   };
