@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: soft-serve
-        image: charmcli/soft-serve:v0.5.5
+        image: charmcli/soft-serve:v0.6.1
         imagePullPolicy: Always
         ports:
         - containerPort: 23231
