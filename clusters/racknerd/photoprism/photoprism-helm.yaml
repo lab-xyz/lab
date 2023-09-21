@@ -10,7 +10,7 @@ spec:
   releaseName: photoprism
   chart:
     spec:
-      chart: p80n/photoprism
+      chart: photoprism
       sourceRef:
         kind: HelmRepository
         name: photoprism-repo
