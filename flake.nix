@@ -11,6 +11,7 @@
         helm
         kubectl
         sops
+        terraform
       ];
     };
   };
