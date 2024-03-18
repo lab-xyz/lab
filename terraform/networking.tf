@@ -71,37 +71,11 @@ resource "oci_core_security_list" "public-security-list" {
     source      = "0.0.0.0/0"
     source_type = "CIDR_BLOCK"
     protocol    = "6"
-    description = "ALT SSH traffic"
+    description = "k3s"
 
     tcp_options {
-      min = 2022
-      max = 2022
-    }
-  }
-
-  ingress_security_rules {
-    stateless   = false
-    source      = "0.0.0.0/0"
-    source_type = "CIDR_BLOCK"
-    protocol    = "17"
-    description = "Wireguard"
-
-    udp_options {
-      min = 51820
-      max = 51820
-    }
-  }
-
-  ingress_security_rules {
-    stateless   = false
-    source      = "0.0.0.0/0"
-    source_type = "CIDR_BLOCK"
-    protocol    = "6"
-    description = "MC"
-
-    tcp_options {
-      min = 25565
-      max = 25565
+      min = 6443
+      max = 6443
     }
   }
 }
