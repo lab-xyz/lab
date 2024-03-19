@@ -57,52 +57,8 @@ resource "oci_core_security_list" "public-security-list" {
     stateless   = false
     source      = "0.0.0.0/0"
     source_type = "CIDR_BLOCK"
-    protocol    = "6"
-    description = "SSH traffic"
-
-    tcp_options {
-      min = 22
-      max = 22
-    }
-  }
-
-  ingress_security_rules {
-    stateless   = false
-    source      = "0.0.0.0/0"
-    source_type = "CIDR_BLOCK"
-    protocol    = "6"
-    description = "http"
-
-    tcp_options {
-      min = 80
-      max = 80
-    }
-  }
-
-  ingress_security_rules {
-    stateless   = false
-    source      = "0.0.0.0/0"
-    source_type = "CIDR_BLOCK"
-    protocol    = "6"
-    description = "https"
-
-    tcp_options {
-      min = 443
-      max = 443
-    }
-  }
-
-  ingress_security_rules {
-    stateless   = false
-    source      = "0.0.0.0/0"
-    source_type = "CIDR_BLOCK"
     protocol    = "all"
-    description = "ts"
-
-    tcp_options {
-      min = 41641
-      max = 41641
-    }
+    description = "allow all"
   }
 }
 
