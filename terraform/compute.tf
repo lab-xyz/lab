@@ -8,8 +8,8 @@ resource "oci_core_instance" "vm_instance_ampere" {
     preserve_boot_volume = false
 
     shape_config {
-        memory_in_gbs = 16
-        ocpus         = 4
+        memory_in_gbs = 6
+        ocpus         = 2
     }
 
     metadata = {
