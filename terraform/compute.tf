@@ -1,6 +1,6 @@
 resource "oci_core_instance" "vm_instance_ampere" {
-    count = 1
-    availability_domain                 = data.oci_identity_availability_domains.ads.availability_domains[0].name
+    count = 0
+    availability_domain                 = data.oci_identity_availability_domains.ads.availability_domains[1].name
     compartment_id                      = oci_identity_compartment.tf-compartment.id
     shape                               = "VM.Standard.A1.Flex"
     display_name                        = join("", [var.vm_name_template, "-arm", count.index]) 
@@ -8,8 +8,8 @@ resource "oci_core_instance" "vm_instance_ampere" {
     preserve_boot_volume = false
 
     shape_config {
-        memory_in_gbs = 6
-        ocpus         = 2
+        memory_in_gbs = 16
+        ocpus         = 4
     }
 
     metadata = {
@@ -19,7 +19,7 @@ resource "oci_core_instance" "vm_instance_ampere" {
     source_details {
         source_id   = var.vm_image_arm
         source_type = "image"
-        boot_volume_size_in_gbs = 150
+        boot_volume_size_in_gbs = 200
     }
 
     create_vnic_details {
@@ -32,7 +32,7 @@ resource "oci_core_instance" "vm_instance_ampere" {
 }
 
 resource "oci_core_instance" "vm_instance_x86_64" {
-  count                               = 0
+  count                               = 1
   availability_domain                 = data.oci_identity_availability_domains.ads.availability_domains[2].name
   compartment_id                      = oci_identity_compartment.tf-compartment.id
   shape                               = "VM.Standard.E2.1.Micro"
