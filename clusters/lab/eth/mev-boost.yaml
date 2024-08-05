@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mev-boost
+  namespace: eth
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/app: mev-boost
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/app: mev-boost
+    spec:
+      containers:
+        - name: mev-boost
+          image: "flashbots/mev-boost:1.8"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 18550
+          args:
+            - "-min-bid"
+            - "0.05"
+            - "-relay-check"
+            - "-relays"
+            - "https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mev-boost
+  namespace: eth
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/app: mev-boost
+  ports:
+    - protocol: TCP
+      port: 18550
+      targetPort: 18550

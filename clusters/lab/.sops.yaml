@@ -1,0 +1,6 @@
+---
+keys:
+  - &t14 age14e2d2y8e2avzfrsyxg9dudxd36svm24t7skw6e969n0c42znlp3shffdtg
+creation_rules:
+  - unencrypted_regex: "^(apiVersion|metadata|kind|type)$"
+    age: *t14

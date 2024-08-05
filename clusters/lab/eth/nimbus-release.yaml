@@ -1,0 +1,55 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nimbus-mainnet-pvc
+  namespace: eth
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 500Gi
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: nimbus-mainnet
+  namespace: kube-system
+spec:
+  targetNamespace: eth
+  repo: https://ethpandaops.github.io/ethereum-helm-charts/
+  chart: nimbus
+  valuesContent: |-
+    replicas: 1
+    image:
+      pullPolicy: "Always"
+    extraArgs:
+    - "--web3-url=http://nethermind-mainnet.eth.svc.cluster.local:8551"
+    - "--payload-builder=true"
+    - "--payload-builder-url=http://mev-boost.eth.svc.cluster.local:18550"
+    p2pNodePort:
+      enabled: true
+      port: 30001
+    persistence:
+      enabled: true
+      existingClaim: nimbus-mainnet-pvc
+    checkpointSync:
+      enabled: true
+      network: mainnet
+      url: https://mainnet-checkpoint-sync.attestant.io
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nimbus-http-rpc
+  namespace: eth
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/instance: nimbus-mainnet
+  ports:
+    - protocol: TCP
+      port: 5052
+      targetPort: 5052

@@ -1,0 +1,48 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nethermind-mainnet-pvc
+  namespace: eth
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 1200Gi
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: nethermind-mainnet
+  namespace: kube-system
+spec:
+  targetNamespace: eth
+  repo: https://ethpandaops.github.io/ethereum-helm-charts/
+  chart: nethermind
+  valuesContent: |-
+    replicas: 1
+    image:
+      pullPolicy: "Always"
+      tag: 1.28.0
+    p2pNodePort:
+      enabled: true
+      port: 30303
+    persistence:
+      enabled: true
+      existingClaim: nethermind-mainnet-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nethermind-http-rpc
+  namespace: eth
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/instance: nethermind-mainnet
+  ports:
+    - protocol: TCP
+      port: 8545
+      targetPort: 8545

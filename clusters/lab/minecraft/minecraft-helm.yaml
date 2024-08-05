@@ -1,0 +1,103 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: minecraft
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mc-world
+  namespace: minecraft
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: minecraft
+  namespace: kube-system
+spec:
+  targetNamespace: minecraft
+  repo: https://itzg.github.io/minecraft-server-charts/
+  chart: minecraft
+  valuesContent: |-
+    image:
+      repository: itzg/minecraft-server
+      tag: latest
+      pullPolicy: Always
+    replicaCount: 1
+    resources:
+      requests:
+        memory: 1024Mi
+        cpu: 1000m
+    strategyType: Recreate
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+    securityContext:
+      runAsUser: 1000
+      fsGroup: 1000
+    livenessProbe:
+      command:
+        - mc-health
+      initialDelaySeconds: 30
+      periodSeconds: 5
+      failureThreshold: 20
+      successThreshold: 1
+      timeoutSeconds: 1
+    readinessProbe:
+      command:
+        - mc-health
+      initialDelaySeconds: 30
+      periodSeconds: 5
+      failureThreshold: 20
+      successThreshold: 1
+      timeoutSeconds: 1
+    startupProbe:
+      command:
+        - mc-health
+      enabled: false
+      failureThreshold: 30
+      periodSeconds: 10
+    extraVolumes: []
+
+    minecraftServer:
+      eula: "TRUE"
+      version: "LATEST"
+      type: "VANILLA"
+      difficulty: easy
+      whitelist: cjriddz,k359
+      ops: cjriddz,k359
+      maxWorldSize: 15000
+      viewDistance: 24
+      motd: "gwaaaaa"
+      pvp: false
+      levelType: DEFAULT
+      worldSaveName: world
+      forceReDownload: false
+      memory: 1024M
+      serviceAnnotations: {}
+      serviceType: LoadBalancer
+      servicePort: 25565
+      clusterIP:
+      loadBalancerIP:
+      externalIPs:
+      query:
+        enabled: false
+        port: 25565
+    extraEnv:
+      {}
+    envFrom: []
+
+    persistence:
+      annotations: {}
+      storageClass: "longhorn"
+      dataDir:
+        enabled: true
+        existingClaim: mc-world

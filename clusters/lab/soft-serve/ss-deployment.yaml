@@ -48,13 +48,16 @@ spec:
     spec:
       containers:
         - name: soft-serve
-          image: charmcli/soft-serve:v0.6.1
+          image: charmcli/soft-serve:v0.7.6
           imagePullPolicy: Always
           ports:
             - containerPort: 23231
           volumeMounts:
             - name: soft-serve-data
               mountPath: /soft-serve
+          env:
+            - name: SOFT_SERVE_INITIAL_ADMIN_KEYS
+              value: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHM4Zr0PFN7QdOG2aJ+nuzRCK6caulrpY6bphA1Ppl8Y e@t14"
       volumes:
         - name: soft-serve-data
           persistentVolumeClaim:
