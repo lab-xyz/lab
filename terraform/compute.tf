@@ -1,5 +1,5 @@
 resource "oci_core_instance" "vm_instance_ampere" {
-    count = 1
+    count = 0
     availability_domain                 = data.oci_identity_availability_domains.ads.availability_domains[1].name
     compartment_id                      = oci_identity_compartment.tf-compartment.id
     shape                               = "VM.Standard.A1.Flex"
@@ -46,7 +46,7 @@ resource "oci_core_instance" "vm_instance_x86_64" {
   source_details {
     source_id   = var.vm_image_amd64
     source_type = "image"
-    boot_volume_size_in_gbs = 50
+    boot_volume_size_in_gbs = 100
   }
 
   create_vnic_details {
