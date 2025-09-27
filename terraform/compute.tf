@@ -32,7 +32,7 @@ resource "oci_core_instance" "vm_instance_ampere" {
 }
 
 resource "oci_core_instance" "vm_instance_x86_64" {
-  count                               = 1
+  count                               = 2
   availability_domain                 = data.oci_identity_availability_domains.ads.availability_domains[2].name
   compartment_id                      = oci_identity_compartment.tf-compartment.id
   shape                               = "VM.Standard.E2.1.Micro"
